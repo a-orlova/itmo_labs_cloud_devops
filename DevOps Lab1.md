@@ -136,8 +136,4 @@ sudo ln -s /etc/nginx/sites-available/domain_two.conf /etc/nginx/sites-enabled/
 
 ![image](https://github.com/user-attachments/assets/0b1a60b7-febe-403f-9c0d-f236bc2a08b1)
 
-# Сложности
-
-Во время всего выполнения лабы возникали трудности с сохранением файлов .conf, раз 10 приходилось переписывать одно и то же заново, хотя все сохраняли. Но в итоге все получилось как надо)
-
 ![image](https://github.com/user-attachments/assets/260aac4c-aac6-4dba-8ea1-45dd29dd1f45)

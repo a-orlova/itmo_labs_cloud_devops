@@ -127,3 +127,17 @@ sudo ln -s /etc/nginx/sites-available/domain_two.conf /etc/nginx/sites-enabled/
 ![image](https://github.com/user-attachments/assets/e72d1903-67da-4f09-9b79-ffc26d620ad2)
 
 # Alias
+
+Теперь займемся созданием псевдонимов путей к файлам или каталогам на сервере. Создаем дополнительную директорию **newfile** с ещё одним html файлом. Чтобы каждый раз не прописывать полный путь к нему, создаем **alias**. В новом блоке **location** определим сокращение нашего пути в директории с новым файлом.
+
+![image](https://github.com/user-attachments/assets/2d48dc14-5cd0-48a7-aec8-3f9d55377f91)
+
+Всё работает!
+
+![image](https://github.com/user-attachments/assets/0b1a60b7-febe-403f-9c0d-f236bc2a08b1)
+
+# Сложности
+
+Во время всего выполнения лабы возникали трудности с сохранением файлов .conf, раз 10 приходилось переписывать одно и то же заново, хотя все сохраняли. Но в итоге все получилось как надо)
+
+![image](https://github.com/user-attachments/assets/260aac4c-aac6-4dba-8ea1-45dd29dd1f45)

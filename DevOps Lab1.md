@@ -107,4 +107,23 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 
 ![image](https://github.com/user-attachments/assets/b8c24173-520c-4d42-8927-b182e48a44b2)
 
+# Проверка работы сервера
+
+Для начала активируем вируальные хосты:
+```
+sudo ln -s /etc/nginx/sites-available/domain_one.conf /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/domain_two.conf /etc/nginx/sites-enabled/
+```
+
+Затем, с помощью команды **sudo nginx -t** проверим конфигурацию:
+
 ![image](https://github.com/user-attachments/assets/8dd53817-3aa4-4e6f-bd1f-53103a5e0220)
+
+Ошибок нет, значит можно перезапустить энджинкс с помощью **sudo systemctl reload nginx**
+
+Заходим на наши сайты с помощью **https://domain_one** и **https://domain_two**, и... всё работает!
+
+![image](https://github.com/user-attachments/assets/a356a808-fe8b-48f9-bba8-c609c3c31c63)
+![image](https://github.com/user-attachments/assets/e72d1903-67da-4f09-9b79-ffc26d620ad2)
+
+# Alias

@@ -5,3 +5,5 @@
 Феофанов Никита, К3222
 
 Зубов Алексей, К3220
+
+![image](https://github.com/user-attachments/assets/d38cd7ae-faa9-4b10-9c57-f1f8243da4da)

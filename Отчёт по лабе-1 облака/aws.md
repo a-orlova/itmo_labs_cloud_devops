@@ -34,8 +34,9 @@
 - **Amazon Comprehend** -- сервис, использующий технологию NLP для анализа текста и извлечения из него полезной информации
 - **Amazon AWS Backup** -- сервис для автоматического создания и хранения резервных данных и управления ими
 
-В результате работы была получена следующая таблица:
-![image_2024-12-15_16-56-32 (2)](https://github.com/user-attachments/assets/f6c287c1-2e25-4e47-af48-168712cea026)
+В результате работы была получена следующая [таблица](https://docs.google.com/spreadsheets/d/1qnQ3fE6z63TVK-_jVGYb7jzE5WirQ_vjQNAPFY3mkUE/edit?gid=0#gid=0):
+![image](https://github.com/user-attachments/assets/1c2566ad-073f-40e5-91f6-c8dcb892e9e4)
+
 
 
 ## Вывод

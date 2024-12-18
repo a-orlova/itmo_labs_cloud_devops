@@ -84,8 +84,6 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-node-
-      - name: Install Dependencies
-        run: npm ci  # 3. npm ci вместо npm install для точной установки зависимостей
       - name: Build Project
         run: docker-compose build  
 

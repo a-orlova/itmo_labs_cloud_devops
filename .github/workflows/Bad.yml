@@ -16,4 +16,5 @@ jobs:
         # run: ssh user@server "deploy_script.sh"  # 5. небезопасный SSH-доступ
         run: echo "Skipping deploy step for now"
       - name: Build and Deploy
-        run: docker-compose up -d --build  # 6. отсутствие кэширования сборки
+        # run: docker-compose up -d --build  # 6. отсутствие кэширования сборки
+        run: echo "Skipping deploy step for now"

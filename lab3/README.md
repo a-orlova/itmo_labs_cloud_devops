@@ -77,15 +77,14 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Cache Dependencies  # 2. кэшируем зависимости 
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-      - name: Build Project
-        run: docker-compose build  
+
+      - name: Install Docker Compose  # Устанавливаем Docker Compose
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
+      - name: Build Project  # Сборка проекта в Docker
+        run: docker-compose build
 
   test:
     runs-on: ubuntu-20.04
@@ -93,18 +92,23 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
-      - name: Run Tests
-        run: ./run_tests.sh  # 5. прерываем выполнение при ошибке в тестах
-      - continue-on-error: false
+
+      - name: Run Tests  # Запуск тестов внутри Docker-контейнера
+        run: docker-compose run --rm app ./run_tests.sh
+        continue-on-error: false
 
   deploy:
     runs-on: ubuntu-20.04
     needs: test
     steps:
+      - name: Install Docker Compose  # Устанавливаем Docker Compose на сервере
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+
       - name: Deploy to Server
-        run: ssh -i ~/.ssh/deploy_key user@server "deploy_script.sh"  # 4. настроили безопасный SSH-доступ
-      - name: Start Application
-        run: docker-compose up -d
+        run: ssh -i ~/.ssh/deploy_key user@server "docker-compose pull && docker-compose up -d"
+
 ```
 
 ### Как исправили?

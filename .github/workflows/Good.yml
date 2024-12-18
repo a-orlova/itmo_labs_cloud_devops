@@ -4,40 +4,28 @@ on: push
 
 jobs:
   build:
-    runs-on: ubuntu-20.04  # 1. фиксированная версия убунту
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Cache Dependencies  # 2. кэшируем зависимости
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install Dependencies
-        run: npm ci  # 3. npm ci вместо npm install для точной установки зависимостей
-
-      - name: Install Docker Compose  # Устанавливаем Docker Compose
+      - name: Install Docker Compose
         run: |
           sudo apt-get update
           sudo apt-get install -y docker-compose
 
       - name: Build Project
-        # run: docker-compose build  
-        run: echo "Skipping Build Project step for now"
+        run: docker-compose build  
 
   test:
     runs-on: ubuntu-20.04
-    needs: build  # 4. отделили тестирование от сборки
+    needs: build
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
       - name: Run Tests
-        run: ./run_tests.sh  # 5. прерываем выполнение при ошибке в тестах
+        run: ./run_tests.sh
         continue-on-error: false
 
   deploy:
@@ -45,7 +33,7 @@ jobs:
     needs: test
     steps:
       - name: Deploy to Server
-        run: ssh -i ~/.ssh/deploy_key user@server "deploy_script.sh"  # 4. настроили безопасный SSH-доступ
+        run: ssh -i ~/.ssh/deploy_key user@server "deploy_script.sh"
 
       - name: Start Application
         run: docker-compose up -d

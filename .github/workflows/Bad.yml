@@ -13,6 +13,7 @@ jobs:
       - name: Run Tests
         run: ./run_tests.sh || true  # 4. игнор результата тестов
       - name: Deploy
-        run: ssh user@server "deploy_script.sh"  # 5. небезопасный SSH-доступ
+        # run: ssh user@server "deploy_script.sh"  # 5. небезопасный SSH-доступ
+        run: echo "Skipping deploy step for now"
       - name: Build and Deploy
         run: docker-compose up -d --build  # 6. отсутствие кэширования сборки

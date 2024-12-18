@@ -26,15 +26,23 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
+      - name: Install Dependencies
+        run: npm ci
       - name: Run Tests
-        run: ./run_tests.sh  # 5. прерываем выполнение при ошибке в тестах
-      - continue-on-error: false
+        run: ./run_tests.sh  # 5. тесты прерывают выполнение при ошибке
+        continue-on-error: false
 
   deploy:
     runs-on: ubuntu-20.04
     needs: test
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Setup SSH Key  # 6. настраиваем безопасный доступ через SSH
+        uses: webfactory/ssh-agent@v0.5.4
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}  # используем секрет для хранения ключа
       - name: Deploy to Server
-        run: ssh -i ~/.ssh/deploy_key user@server "deploy_script.sh"  # 4. настроили безопасный SSH-доступ
+        run: ssh user@server "deploy_script.sh"
       - name: Start Application
         run: docker-compose up -d

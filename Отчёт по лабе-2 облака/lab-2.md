@@ -31,7 +31,8 @@
 
 
 В результате работы была получена следующая [таблица](https://docs.google.com/spreadsheets/d/1sgDEFPPv7C4fOYxGYoo8N-tVAIZFJFgvFaRR0Bv8arc/edit?gid=0#gid=0):
-![image_2024-12-16_13-39-06](https://github.com/user-attachments/assets/4c3233d8-9976-412c-8b1b-a295672d5d35)
+![image](https://github.com/user-attachments/assets/b36d953c-40e7-4a2b-a414-15d62a1be972)
+
 
 
 ## Вывод
